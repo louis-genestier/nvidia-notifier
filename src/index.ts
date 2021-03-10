@@ -10,7 +10,7 @@ import config from './config';
   const discordWebhook: DiscordWebhook = new DiscordWebhook(config.urlWebhook, 'Monitor');
 
   setInterval(async () => {
-    let file: string = await fs.readFile(`${__dirname}/status.json`, 'utf8');
+    let file: string = await fs.readFile(`./status.json`, 'utf8');
     let status = JSON.parse(file);
 
     try {
@@ -29,13 +29,13 @@ import config from './config';
 
       status.isError = false;
 
-      await fs.writeFile(`${__dirname}/status.json`, Buffer.from(JSON.stringify(status, null, 4)));
+      await fs.writeFile(`./status.json`, Buffer.from(JSON.stringify(status, null, 4)));
 
     } catch (e) {
       if (!status.isError) {
         await discordWebhook.sendErrorWebhook(e);
         status.isError = true;
-        await fs.writeFile(`${__dirname}/status.json`, Buffer.from(JSON.stringify(status, null, 4)));
+        await fs.writeFile(`./status.json`, Buffer.from(JSON.stringify(status, null, 4)));
       }
       logger.error(e);
     }
