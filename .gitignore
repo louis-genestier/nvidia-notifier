@@ -1,0 +1,8 @@
+logs.txt
+.env
+node_modules
+.idea
+.DS_Store
+build
+dist/**/*
+yarn.lock
