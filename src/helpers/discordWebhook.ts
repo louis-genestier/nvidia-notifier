@@ -17,7 +17,7 @@ class DiscordWebhook {
     this.username = username;
   }
 
-  async sendSuccessWebhook(card: ICard) {
+  async sendSuccessWebhook(card: ICard): Promise<void> {
     const body = {
       "username": `${this.username}`,
       "embeds": [
@@ -62,7 +62,7 @@ class DiscordWebhook {
     await this.sendWebhook({ ...this.options, body: JSON.stringify(body) });
   }
 
-  async sendErrorWebhook(e: Error) {
+  async sendErrorWebhook(e: Error): Promise<void> {
     const body = {
       "username": `${this.username}`,
       "embeds": [
@@ -89,8 +89,8 @@ class DiscordWebhook {
   }
 
 
-  private async sendWebhook(options: object) {
-    const res = await fetch(this.url, options);
+  private async sendWebhook(options: object): Promise<void> {
+    await fetch(this.url, options);
   }
 }
 
