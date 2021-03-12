@@ -14,7 +14,7 @@ import config from './config';
     let status = JSON.parse(file);
 
     try {
-      const card: ICard = await getProduct();
+      const card: ICard = await getProduct(config.url3080);
       logger.info(`Request done: ${card.displayName} has ${card.prdStatus} status`);
 
       if (!status.ldlc.links[0]) {
