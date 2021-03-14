@@ -33,7 +33,9 @@ import config from './config';
 
     } catch (e) {
       if (!status.isError) {
-        await discordWebhook.sendErrorWebhook(e);
+        if (config.sendErrorsToDiscord) {
+          await discordWebhook.sendErrorWebhook(e);
+        }
         status.isError = true;
         await fs.writeFile(`./status.json`, Buffer.from(JSON.stringify(status, null, 4)));
       }
