@@ -41,5 +41,5 @@ import config from './config';
       }
       logger.error(e);
     }
-  }, 5000)
+  }, config.interval * 1000)
 })();
