@@ -1,7 +1,7 @@
 {
   "name": "nvidia-autocart",
   "version": "1.0.0",
-  "description": "",
+  "description": "test pr",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon",
